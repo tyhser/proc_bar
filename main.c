@@ -16,9 +16,9 @@ void proc_bar(int x)
 		buf[i] = 0xe2;
 		buf[i+1] = 0x96;
 		buf[i+2] = 0x89;
-                printf("[%c][%-*s][%d%%]\r", index[i % 4], 103+(i/3)*2, buf, i/3);
                 i+=3;
         }
+        printf("[%c][%-*s][%d%%]\r", index[(i-3) % 4], 103+((i-3)/3)*2, buf, (i-3)/3);
         fflush(stdout);
 }
 
@@ -26,7 +26,6 @@ int main(void)
 {
 	for (int i = 0; i <= 100; i++) {
         	proc_bar(i);
-		//printf("\r");
 		usleep(100000);
 	}
 
